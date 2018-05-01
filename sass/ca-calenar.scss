@@ -1,0 +1,103 @@
+$font-stack: Helvetica, sans-serif;
+
+/*%padding-test {
+  padding: 5px;
+}*/
+
+.cac-calendar {
+  border-collapse: collapse;
+  width:100%;
+  max-width:100%;
+  min-width:670px;
+  font-family: $font-stack;
+
+  td, th {
+    border:1px solid #e4e4e4;
+  }
+
+  .cac-calendar-title {
+    
+    color: #7d7d7d;
+    font-size:30px;
+    padding: 20px;
+
+    div {
+      display:inline-block;
+     }
+
+    .cac-btn-prevMonth {
+      cursor: pointer;
+      padding-right: 20px;
+    }
+
+    .cac-btn-nextMonth {
+      cursor: pointer;
+      padding-left: 20px;
+    }
+  }
+
+  .cac-day-names {
+    th {
+      padding: 5px;
+      color: #7d7d7d;
+      width: 14.28%;
+      text-align:center;
+    }
+  }
+
+  td.cac-date {
+    min-height: 100px;
+    padding: 5px;
+
+    .cac-date-box {
+
+      min-height:70px;
+
+      .cac-date-text {
+        color: #888888;
+        text-align: right;
+        font-size: 17px;
+      }
+
+      .cac-date-content {
+        min-height:40px;
+      }  
+    }
+    
+  }
+
+  td:hover {
+    cursor: pointer;
+    background: #efefef;
+  }
+
+  .cac-date-today {
+    background: #cce9ff;
+  }
+
+  .cac-date-empty {
+    background: #f3f3f3;
+  }
+
+  .cac-list {
+    margin: 0;
+    padding: 7px;
+    list-style: none;
+
+    .cac-list-item {
+      padding: 4px 0;
+      .cac-list-item-label {
+        float:left;
+      }
+      .cac-list-item-value {
+        float:right;
+      }
+    }
+
+    .cac-list-item:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+}

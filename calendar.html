@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Javascript Calendar</title>
+  <link rel="stylesheet" href="./css/ca-calenar.css">
+</head>
+<body>
+  <div id="calendar"></div>
+  <script src="./ca-calendar.js"></script>
+  <script>
+    let a = new Cacalendar({
+      contents: [
+        {
+          date: '04/30/2018',
+          items: [
+            {
+                label: 'aadd',
+                value: 'v'
+            },
+            {
+                label: 'aadd',
+                value: 'v'
+            },
+            {
+                label: 'aadd',
+                value: 'v'
+            },
+
+          ]
+        },
+        {
+          date: '04/25/2018',
+          items: [
+            {
+                label: 'aadd',
+                value: 'v'
+            }
+          ]
+        },
+        {
+          date: '02/25/2018',
+          items: [
+            {
+                label: 'aadd',
+                value: 'v'
+            }
+          ]
+        },
+        {
+          date: '01/25/2017',
+        }
+      ]
+    })
+    console.log(a)
+    a.print()
+    a.click(() => {
+        console.log('abc')
+    })
+  </script>
+</body>
+</html>

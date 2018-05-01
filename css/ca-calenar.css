@@ -1,0 +1,62 @@
+/*%padding-test {
+  padding: 5px;
+}*/
+.cac-calendar {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  min-width: 670px;
+  font-family: Helvetica, sans-serif; }
+  .cac-calendar td, .cac-calendar th {
+    border: 1px solid #e4e4e4; }
+  .cac-calendar .cac-calendar-title {
+    color: #7d7d7d;
+    font-size: 30px;
+    padding: 20px; }
+    .cac-calendar .cac-calendar-title div {
+      display: inline-block; }
+    .cac-calendar .cac-calendar-title .cac-btn-prevMonth {
+      cursor: pointer;
+      padding-right: 20px; }
+    .cac-calendar .cac-calendar-title .cac-btn-nextMonth {
+      cursor: pointer;
+      padding-left: 20px; }
+  .cac-calendar .cac-day-names th {
+    padding: 5px;
+    color: #7d7d7d;
+    width: 14.28%;
+    text-align: center; }
+  .cac-calendar td.cac-date {
+    min-height: 100px;
+    padding: 5px; }
+    .cac-calendar td.cac-date .cac-date-box {
+      min-height: 70px; }
+      .cac-calendar td.cac-date .cac-date-box .cac-date-text {
+        color: #888888;
+        text-align: right;
+        font-size: 17px; }
+      .cac-calendar td.cac-date .cac-date-box .cac-date-content {
+        min-height: 40px; }
+  .cac-calendar td:hover {
+    cursor: pointer;
+    background: #efefef; }
+  .cac-calendar .cac-date-today {
+    background: #cce9ff; }
+  .cac-calendar .cac-date-empty {
+    background: #f3f3f3; }
+  .cac-calendar .cac-list {
+    margin: 0;
+    padding: 7px;
+    list-style: none; }
+    .cac-calendar .cac-list .cac-list-item {
+      padding: 4px 0; }
+      .cac-calendar .cac-list .cac-list-item .cac-list-item-label {
+        float: left; }
+      .cac-calendar .cac-list .cac-list-item .cac-list-item-value {
+        float: right; }
+    .cac-calendar .cac-list .cac-list-item:after {
+      content: '';
+      display: block;
+      clear: both; }
+
+/*# sourceMappingURL=ca-calenar.css.map */
