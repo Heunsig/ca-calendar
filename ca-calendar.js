@@ -6,8 +6,7 @@
   this.Cacalendar = function () {
     let options = {
       id: 'calendar',
-      date: '',
-      contents: []
+      date: ''
     }
 
     let year = 0
@@ -16,6 +15,8 @@
 
     let DefaultDate = null
     let daysPerMonth = []
+
+    let contents = []
 
     let elements = {
       calendar: null,
@@ -64,6 +65,14 @@
         set: function (val) {
           date = val
         },
+      },
+      'contents': {
+        get: function () {
+          return contents
+        },
+        set: function (val) {
+          contents = val
+        }
       },
       'elements': {
         get: function () {
@@ -223,7 +232,7 @@
     }
   }
 
-  function createCalendarBody (month, date, year, daysPerMonth, options) {
+  function createCalendarBody (month, date, year, daysPerMonth, contents) {
     const TOTALDATEBOXS = 42
 
     let boxCounter = 0
@@ -262,11 +271,11 @@
                 <div class="cac-date-text">${dateCounter}</div>
                 <div class="cac-date-content">`
 
-          for (let index in options.contents) {
-            if (new Date(year, month, date).getTime() == new Date(options.contents[index].date).getTime()) {
-              if (options.contents[index].items) {
+          for (let index in contents) {
+            if (new Date(year, month, date).getTime() == new Date(contents[index].date).getTime()) {
+              if (contents[index].items) {
                 calendarContent += `<ul class="cac-list">`
-                options.contents[index].items.forEach(item => {
+                contents[index].items.forEach(item => {
                   calendarContent += `
                     <li class="cac-list-item">
                       <div class="cac-list-item-label">${item.label}</div>
@@ -276,7 +285,7 @@
                 })
                 calendarContent += `</ul>`
               }
-              
+
               break
             }
           }
@@ -291,11 +300,11 @@
               <div class="cac-date-text">${dateCounter}</div>
               <div class="cac-date-content">`
 
-          for (let index in options.contents) {
-            if (new Date(year, month, dateCounter).getTime() == new Date(options.contents[index].date).getTime()) {
-              if (options.contents[index].items) {
+          for (let index in contents) {
+            if (new Date(year, month, dateCounter).getTime() == new Date(contents[index].date).getTime()) {
+              if (contents[index].items) {
                 calendarContent += `<ul class="cac-list">`
-                options.contents[index].items.forEach(item => {
+                contents[index].items.forEach(item => {
                   calendarContent += `
                     <li class="cac-list-item">
                       <div class="cac-list-item-label">${item.label}</div>
@@ -359,7 +368,7 @@
 
   function render () {
     this.elements.monthYear.innerHTML = `${MONTHNAMES[this.month]} ${this.year}`
-    this.elements.calendarBody.innerHTML = createCalendarBody(this.month, this.date, this.year, this.daysPerMonth, this.options)
+    this.elements.calendarBody.innerHTML = createCalendarBody(this.month, this.date, this.year, this.daysPerMonth, this.contents)
     eventSetter.call(this)
   }
 
@@ -409,6 +418,11 @@
       this.year = this.year - 1
       this.month = 11
     }
+    render.call(this)
+  }
+
+  Cacalendar.prototype.setContents = function (valContents) {
+    this.contents = valContents
     render.call(this)
   }
 

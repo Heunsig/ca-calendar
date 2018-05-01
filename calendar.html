@@ -9,8 +9,9 @@
   <div id="calendar"></div>
   <script src="./ca-calendar.js"></script>
   <script>
-    let a = new Cacalendar({
-      contents: [
+    let a = new Cacalendar()
+    a.print()
+    a.setContents([
         {
           date: '04/30/2018',
           items: [
@@ -50,10 +51,7 @@
         {
           date: '01/25/2017',
         }
-      ]
-    })
-    console.log(a)
-    a.print()
+      ])
     a.click(() => {
         console.log('abc')
     })
