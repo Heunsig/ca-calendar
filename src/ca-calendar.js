@@ -1,9 +1,9 @@
 (function() {
-
   const MONTHNAMES = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',  'December']
   const DAYNAMES = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday',  'Saturday' ]
 
   this.Cacalendar = function () {
+
     let options = {
       id: 'calendar',
       date: ''
@@ -178,6 +178,7 @@
         calendarTitle,
         trDayNames,
         monthYear,
+        trCalendarTitle,
         btnPrevMonth,
         btnNextMonth
 
