@@ -2,7 +2,7 @@
   const MONTHNAMES = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',  'December']
   const DAYNAMES = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday',  'Saturday' ]
 
-  this.Cacalendar = function () {
+  this.CaCalendar = function () {
 
     let options = {
       id: 'calendar',
@@ -373,12 +373,12 @@
     eventSetter.call(this)
   }
 
-  Cacalendar.prototype.print = function () {
+  CaCalendar.prototype.print = function () {
     render.call(this)
     document.getElementById(this.options.id).appendChild(this.elements.calendar)
   }
 
-  Cacalendar.prototype.today = function () {  
+  CaCalendar.prototype.today = function () {  
     let today = new Date()
     this.month = today.getMonth()
     this.date = today.getDate()
@@ -386,7 +386,7 @@
     render.call(this)
   }
 
-  Cacalendar.prototype.defaultDate = function () {
+  CaCalendar.prototype.defaultDate = function () {
     let DateValue = getDefaultDate(this.options.date)
     this.month = DateValue.getMonth()
     this.date = DateValue.getDate()
@@ -394,17 +394,17 @@
     render.call(this)
   }
 
-  Cacalendar.prototype.nextYear = function () {
+  CaCalendar.prototype.nextYear = function () {
     this.year = this.year + 1
     render.call(this)
   }
 
-  Cacalendar.prototype.previousYear = function () {
+  CaCalendar.prototype.previousYear = function () {
     this.year = this.year - 1
     render.call(this)
   }
 
-  Cacalendar.prototype.nextMonth = function () {
+  CaCalendar.prototype.nextMonth = function () {
     this.month = this.month + 1
     if (this.month > 11) {
       this.year = this.year + 1
@@ -413,7 +413,7 @@
     render.call(this)
   }
 
-  Cacalendar.prototype.previousMonth = function () {
+  CaCalendar.prototype.previousMonth = function () {
     this.month = this.month - 1
     if (this.month < 0) {
       this.year = this.year - 1
@@ -422,12 +422,12 @@
     render.call(this)
   }
 
-  Cacalendar.prototype.setContents = function (valContents) {
+  CaCalendar.prototype.setContents = function (valContents) {
     this.contents = valContents
     render.call(this)
   }
 
-  Cacalendar.prototype.click = function (handler) {
+  CaCalendar.prototype.click = function (handler) {
     this.events.click = handler
     render.call(this)
   }
