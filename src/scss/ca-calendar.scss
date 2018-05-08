@@ -1,8 +1,15 @@
 $font-stack: Helvetica, sans-serif;
 
-/*%padding-test {
-  padding: 5px;
-}*/
+%month-year { 
+  display:inline-block;
+}
+
+@mixin user-select {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */      
+}
 
 .cac-calendar {
   border-collapse: collapse;
@@ -11,29 +18,39 @@ $font-stack: Helvetica, sans-serif;
   min-width:670px;
   font-family: $font-stack;
 
-  td, th {
+  td {
     border:1px solid #e4e4e4;
   }
 
-  .cac-calendar-title {
-    
-    color: #7d7d7d;
-    font-size:30px;
-    padding: 20px;
+  thead {
 
-    div {
-      display:inline-block;
-     }
+    tr {
+      .cac-calendar-title {
+        color: #7d7d7d;
+        font-size:30px;
+        padding: 20px;
 
-    .cac-btn-prevMonth {
-      cursor: pointer;
-      padding-right: 20px;
+        .cac-monthYear {
+          @extend %month-year;
+          min-width: 200px;
+        }
+
+        .cac-btn-prevMonth {
+          @include user-select;
+          @extend %month-year;
+          cursor: pointer;
+          padding-right: 20px;
+        }
+
+        .cac-btn-nextMonth {
+          @include user-select;
+          @extend %month-year;
+          cursor: pointer;
+          padding-left: 20px;
+        }
+      }
     }
 
-    .cac-btn-nextMonth {
-      cursor: pointer;
-      padding-left: 20px;
-    }
   }
 
   .cac-day-names {

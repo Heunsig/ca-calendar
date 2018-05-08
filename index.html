@@ -2,59 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Javascript Calendar</title>
-  <link rel="stylesheet" href="./css/ca-calenar.css">
+  <title>Ca-Calendar</title>
 </head>
 <body>
-  <div id="calendar"></div>
-  <script src="./src/ca-calendar.js"></script>
-  <script>
-    let a = new CaCalendar()
-    a.print()
-    // a.setContents([
-    //     {
-    //       date: '04/30/2018',
-    //       items: [
-    //         {
-    //             label: 'aadd',
-    //             value: 'v'
-    //         },
-    //         {
-    //             label: 'aadd',
-    //             value: 'v'
-    //         },
-    //         {
-    //             label: 'aadd',
-    //             value: 'v'
-    //         },
-
-    //       ]
-    //     },
-    //     {
-    //       date: '04/25/2018',
-    //       items: [
-    //         {
-    //             label: 'aadd',
-    //             value: 'v'
-    //         }
-    //       ]
-    //     },
-    //     {
-    //       date: '02/25/2018',
-    //       items: [
-    //         {
-    //             label: 'aadd',
-    //             value: 'v'
-    //         }
-    //       ]
-    //     },
-    //     {
-    //       date: '01/25/2017',
-    //     }
-    //   ])
-    // a.click(() => {
-    //     console.log('abc')
-    // })
-  </script>
+<div id="calendar"></div>
+<script src="./dist/app.bundle.js"></script>
+<script>
+  var CaCalendar = new CaCalendar()
+  CaCalendar.print()
+</script>
 </body>
 </html>

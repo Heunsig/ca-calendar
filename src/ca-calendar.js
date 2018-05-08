@@ -1,8 +1,7 @@
-(function() {
   const MONTHNAMES = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',  'December']
   const DAYNAMES = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday',  'Saturday' ]
 
-  this.CaCalendar = function () {
+  var CaCalendar = function () {
 
     let options = {
       id: 'calendar',
@@ -368,7 +367,10 @@
   }
 
   function render () {
-    this.elements.monthYear.innerHTML = `${MONTHNAMES[this.month]} ${this.year}`
+    this.elements.monthYear.innerHTML = `
+      <div>${this.year}</div>
+      <div>${MONTHNAMES[this.month]}</div>
+    `
     this.elements.calendarBody.innerHTML = createCalendarBody(this.month, this.date, this.year, this.daysPerMonth, this.contents)
     eventSetter.call(this)
   }
@@ -432,4 +434,4 @@
     render.call(this)
   }
 
-}())
+  export default CaCalendar
