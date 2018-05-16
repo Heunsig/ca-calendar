@@ -353,17 +353,30 @@
     let dateBoxs = document.querySelectorAll('.cac-date')
 
     for (let box of dateBoxs) {
-      let fullDate = null
+      let fullDate = {
+        standard: '',
+        formatted: ''
+      }
+
       let date = box.querySelector('.cac-date-text').innerHTML
 
       if (date) {
-        fullDate = `${this.month + 1}/${date}/${this.year}`
+        fullDate.standard = `${this.year}-${twoDigitMonth(this.month)}-${twoDigitDate(date)}`
+        fullDate.formatted = `${twoDigitMonth(this.month)}/${twoDigitDate(date)}/${this.year}`
       }
 
       box.addEventListener('click', function (e) {
         handler(e, fullDate)
       })  
     }
+  }
+
+  function twoDigitDate (date) {
+    return ('0' + date).slice(-2)
+  }
+
+  function twoDigitMonth (month) {
+    return ('0' + (month + 1)).slice(-2)
   }
 
   function render () {
