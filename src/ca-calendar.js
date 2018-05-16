@@ -296,7 +296,9 @@
       }
 
       if (dateCounter <= this.daysPerMonth[this.month]) { 
-        if (new Date(this.year, this.month, dateCounter).getTime() === new Date(this.defaultYear, this.defaultMonth, this.defaultDate).getTime()) {
+        if (new Date(this.year, this.month, dateCounter).getTime() 
+            === new Date(this.defaultYear, this.defaultMonth, this.defaultDate).getTime()) 
+        {
           calendarContent += `
             <td class="cac-date-today cac-date">
               <div class="cac-date-box">
