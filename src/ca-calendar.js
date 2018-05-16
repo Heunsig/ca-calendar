@@ -8,6 +8,10 @@
       date: ''
     }
 
+    let defaultYear = 0
+    let defaultMonth = 0
+    let defaultDate = 0
+
     let year = 0
     let month = 0
     let date = 0
@@ -38,6 +42,30 @@
       'options': {
         get: function () {
           return Object.assign({}, options)
+        }
+      },
+      'defaultYear': {
+        get: function () {
+          return defaultYear
+        },
+        set: function (val) {
+          defaultYear = val
+        }
+      },
+      'defaultMonth': {
+        get: function () {
+          return defaultMonth
+        },
+        set: function (val) {
+          defaultMonth = val
+        }
+      },
+      'defaultDate': {
+        get: function () {
+          return defaultDate
+        },
+        set: function (val) {
+          defaultDate = val
         }
       },
       'year': {
@@ -95,9 +123,12 @@
 
   function init (elements) {
     let objDate = setDefaultDate(this.options)
+    this.year = objDate.year
     this.month = objDate.month
     this.date = objDate.date
-    this.year = objDate.year
+    this.defaultYear = objDate.year
+    this.defaultMonth = objDate.month
+    this.defaultDate = objDate.date
     
     let objEle = createCalendarLayout()
     elements.calendar = objEle.calendar
@@ -232,12 +263,13 @@
     }
   }
 
-  function createCalendarBody (month, date, year, daysPerMonth, contents) {
+  // function createCalendarBody (this.month, date, year, daysPerMonth, contents) {
+  function createCalendarBody () {  
     const TOTALDATEBOXS = 42
 
     let boxCounter = 0
     let dateCounter = 1
-    let firstDayOfTheWeek = getFristDayOfTheWeek(month, year)
+    let firstDayOfTheWeek = getFristDayOfTheWeek(this.month, this.year)
     let firstDayOfTheWeek2 = firstDayOfTheWeek
     let calendarContent = ``
 
@@ -263,19 +295,19 @@
         calendarContent += `</tr><tr>`
       }
 
-      if (dateCounter <= daysPerMonth[month]) { 
-        if (dateCounter === date) {
+      if (dateCounter <= this.daysPerMonth[this.month]) { 
+        if (new Date(this.year, this.month, dateCounter).getTime() === new Date(this.defaultYear, this.defaultMonth, this.defaultDate).getTime()) {
           calendarContent += `
             <td class="cac-date-today cac-date">
               <div class="cac-date-box">
                 <div class="cac-date-text">${dateCounter}</div>
                 <div class="cac-date-content">`
 
-          for (let index in contents) {
-            if (new Date(year, month, date).getTime() == new Date(contents[index].date).getTime()) {
-              if (contents[index].items) {
+          for (let index in this.contents) {
+            if (new Date(this.year, this.month, this.date).getTime() == new Date(this.contents[index].date).getTime()) {
+              if (this.contents[index].items) {
                 calendarContent += `<ul class="cac-list">`
-                contents[index].items.forEach(item => {
+                this.contents[index].items.forEach(item => {
                   calendarContent += `
                     <li class="cac-list-item">
                       <div class="cac-list-item-label">${item.label}</div>
@@ -300,11 +332,11 @@
               <div class="cac-date-text">${dateCounter}</div>
               <div class="cac-date-content">`
 
-          for (let index in contents) {
-            if (new Date(year, month, dateCounter).getTime() == new Date(contents[index].date).getTime()) {
-              if (contents[index].items) {
+          for (let index in this.contents) {
+            if (new Date(this.year, this.month, dateCounter).getTime() == new Date(this.contents[index].date).getTime()) {
+              if (this.contents[index].items) {
                 calendarContent += `<ul class="cac-list">`
-                contents[index].items.forEach(item => {
+                this.contents[index].items.forEach(item => {
                   calendarContent += `
                     <li class="cac-list-item">
                       <div class="cac-list-item-label">${item.label}</div>
@@ -384,7 +416,8 @@
       <div>${this.year}</div>
       <div>${MONTHNAMES[this.month]}</div>
     `
-    this.elements.calendarBody.innerHTML = createCalendarBody(this.month, this.date, this.year, this.daysPerMonth, this.contents)
+    // this.elements.calendarBody.innerHTML = createCalendarBody(this.month, this.date, this.year, this.daysPerMonth, this.contents)
+    this.elements.calendarBody.innerHTML = createCalendarBody.call(this)
     eventSetter.call(this)
   }
 
