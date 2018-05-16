@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     filename: process.env.NODE_ENV === 'production' ? 'ca-calendar.js' : '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: process.env.NODE_ENV === 'production' ? path.resolve(__dirname, 'dist') : path.resolve(__dirname, 'dev'),
   },
   module: {
     rules: [
