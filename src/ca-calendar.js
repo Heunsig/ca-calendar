@@ -397,6 +397,8 @@
       if (date) {
         fullDate.standard = `${this.year}-${twoDigitMonth(this.month)}-${twoDigitDate(date)}`
         fullDate.formatted = `${twoDigitMonth(this.month)}/${twoDigitDate(date)}/${this.year}`
+      } else {
+        fullDate = null
       }
 
       box.addEventListener('click', function (e) {
