@@ -10,9 +10,43 @@
 <script>
   var CaCalendar = new CaCalendar()
   CaCalendar.print()
-  CaCalendar.click((e, date) => {
-    console.log(date)
-  })
+  // CaCalendar.click((e, date) => {
+  //   console.log(date)
+  // })
+  CaCalendar.setContents([
+    {
+      date: '05/22/2018',
+      items: [
+        {
+          label: 'test1',  
+          value: 's'
+        },
+        {
+          label: 'test2',  
+          value: 's'
+        }
+      ]
+    },
+    {
+      date: '05/23/2018',
+      items: [
+        {
+          label: 'test1',  
+          value: 's'
+        }
+      ]
+    }
+  ])
+  CaCalendar.setDefaultContents([
+    {
+      label: 'test1',
+      value: 'Hello'
+    },
+    {
+      label: 'test2',
+      value: 23
+    }
+  ])
 </script>
 </body>
 </html>

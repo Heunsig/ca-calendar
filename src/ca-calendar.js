@@ -20,6 +20,7 @@
     let daysPerMonth = []
 
     let contents = []
+    let defaultContents = null
 
     let elements = {
       calendar: null,
@@ -99,6 +100,14 @@
         },
         set: function (val) {
           contents = val
+        }
+      },
+      'defaultContents': {
+        get: function () {
+          return defaultContents
+        },
+        set: function (val) {
+          defaultContents = val
         }
       },
       'elements': {
@@ -276,7 +285,7 @@
     calendarContent += `
         <tr>
     ` 
-    while (firstDayOfTheWeek > 0){  
+    while (firstDayOfTheWeek > 0){
         calendarContent += `
           <td class="cac-date cac-date-empty">
             <div class="cac-date-box">
@@ -290,12 +299,14 @@
     }
 
     while (dateCounter <= (TOTALDATEBOXS - boxCounter)){
+      let dateBox = ``
+
       if (firstDayOfTheWeek2 > 6) {
         firstDayOfTheWeek2 = 0
         calendarContent += `</tr><tr>`
       }
 
-      if (dateCounter <= this.daysPerMonth[this.month]) { 
+      if (dateCounter <= this.daysPerMonth[this.month]) {
         if (new Date(this.year, this.month, dateCounter).getTime() 
             === new Date(this.defaultYear, this.defaultMonth, this.defaultDate).getTime()) 
         {
@@ -304,26 +315,41 @@
               <div class="cac-date-box">
                 <div class="cac-date-text">${dateCounter}</div>
                 <div class="cac-date-content">`
+                  if (this.defaultContents) {
+                    dateBox += `<ul class="cac-list">`
+                    this.defaultContents.forEach(item => {
+                      dateBox += `
+                        <li class="cac-list-item">
+                          <div class="cac-list-item-label">${item.label}</div>
+                          <div class="cac-list-item-value">${item.value}</div>
+                        </li>
+                      `
+                    })
+                    dateBox += `</ul>`
+                  }
 
-          for (let index in this.contents) {
-            if (new Date(this.year, this.month, this.date).getTime() == new Date(this.contents[index].date).getTime()) {
-              if (this.contents[index].items) {
-                calendarContent += `<ul class="cac-list">`
-                this.contents[index].items.forEach(item => {
-                  calendarContent += `
-                    <li class="cac-list-item">
-                      <div class="cac-list-item-label">${item.label}</div>
-                      <div class="cac-list-item-value">${item.value}</div>
-                    </li>
-                  `
-                })
-                calendarContent += `</ul>`
-              }
+                  for (let index in this.contents) {
+                    if (new Date(this.year, this.month, this.date).getTime() == new Date(this.contents[index].date).getTime()) {
+                      dateBox = ``
+                      if (this.contents[index].items) {
+                        dateBox += `<ul class="cac-list">`
+                        this.contents[index].items.forEach(item => {
+                          dateBox += `
+                            <li class="cac-list-item">
+                              <div class="cac-list-item-label">${item.label}</div>
+                              <div class="cac-list-item-value">${item.value}</div>
+                            </li>
+                          `
+                        })
+                        dateBox += `</ul>`
+                      }
 
-              break
-            }
-          }
-          
+                      break
+                    }
+                  }
+
+
+          calendarContent += dateBox
           calendarContent += `</div>
               </div>
             </td>`
@@ -333,26 +359,40 @@
             <div class="cac-date-box">
               <div class="cac-date-text">${dateCounter}</div>
               <div class="cac-date-content">`
+                if (this.defaultContents) {
+                  dateBox += `<ul class="cac-list">`
+                  this.defaultContents.forEach(item => {
+                    dateBox += `
+                      <li class="cac-list-item">
+                        <div class="cac-list-item-label">${item.label}</div>
+                        <div class="cac-list-item-value">${item.value}</div>
+                      </li>
+                    `
+                  })
+                  dateBox += `</ul>`
+                }
 
-          for (let index in this.contents) {
-            if (new Date(this.year, this.month, dateCounter).getTime() == new Date(this.contents[index].date).getTime()) {
-              if (this.contents[index].items) {
-                calendarContent += `<ul class="cac-list">`
-                this.contents[index].items.forEach(item => {
-                  calendarContent += `
-                    <li class="cac-list-item">
-                      <div class="cac-list-item-label">${item.label}</div>
-                      <div class="cac-list-item-value">${item.value}</div>
-                    </li>
-                  `
-                })
-                calendarContent += `</ul>`
-              }
+                for (let index in this.contents) {
+                  if (new Date(this.year, this.month, dateCounter).getTime() == new Date(this.contents[index].date).getTime()) {
+                    dateBox = ``
+                    if (this.contents[index].items) {
+                      dateBox += `<ul class="cac-list">`
+                      this.contents[index].items.forEach(item => {
+                        dateBox += `
+                          <li class="cac-list-item">
+                            <div class="cac-list-item-label">${item.label}</div>
+                            <div class="cac-list-item-value">${item.value}</div>
+                          </li>
+                        `
+                      })
+                      dateBox += `</ul>`
+                    }
 
-              break
-            }
-          }
+                    break
+                  }
+                }
 
+          calendarContent += dateBox
           calendarContent += `</div>
             </div>
           </td>`
@@ -374,6 +414,7 @@
     calendarContent += `
         </tr>
     `
+
     return calendarContent
   }
 
@@ -476,6 +517,11 @@
 
   CaCalendar.prototype.setContents = function (valContents) {
     this.contents = valContents
+    render.call(this)
+  }
+
+  CaCalendar.prototype.setDefaultContents = function (contents) {
+    this.defaultContents = contents
     render.call(this)
   }
 
