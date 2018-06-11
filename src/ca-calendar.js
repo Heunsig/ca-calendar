@@ -307,8 +307,7 @@
       }
 
       if (dateCounter <= this.daysPerMonth[this.month]) {
-        if (new Date(this.year, this.month, dateCounter).getTime() 
-            === new Date(this.defaultYear, this.defaultMonth, this.defaultDate).getTime()) 
+        if (match_date(generate_date(generate_date_form(this.year, this.month, dateCounter)), generate_date(generate_date_form(this.defaultYear, this.defaultMonth, this.defaultDate))))
         {
           calendarContent += `
             <td class="cac-date-today cac-date">
@@ -329,7 +328,7 @@
                   }
 
                   for (let index in this.contents) {
-                    if (new Date(this.year, this.month, this.date).getTime() == new Date(this.contents[index].date).getTime()) {
+                    if (match_date(generate_date(generate_date_form(this.year, this.month, this.date)), generate_date(this.contents[index].date))) {
                       dateBox = ``
                       if (this.contents[index].items) {
                         dateBox += `<ul class="cac-list">`
@@ -353,6 +352,7 @@
           calendarContent += `</div>
               </div>
             </td>`
+
         } else {
           calendarContent +=`
           <td class="cac-date">
@@ -373,7 +373,7 @@
                 }
 
                 for (let index in this.contents) {
-                  if (new Date(this.year, this.month, dateCounter).getTime() == new Date(this.contents[index].date).getTime()) {
+                  if (match_date(generate_date(generate_date_form(this.year, this.month, dateCounter)), generate_date(this.contents[index].date))) {
                     dateBox = ``
                     if (this.contents[index].items) {
                       dateBox += `<ul class="cac-list">`
@@ -454,6 +454,27 @@
 
   function twoDigitMonth (month) {
     return ('0' + (month + 1)).slice(-2)
+  }
+
+  function generate_date_form (year, month, date) {
+    return `${year}-${twoDigitMonth(month)}-${twoDigitDate(date)}`
+  }
+
+  function generate_date (date) {
+    let newDate = new Date(date)
+    newDate.setMinutes( newDate.getMinutes() + newDate.getTimezoneOffset() )
+    return newDate
+  }
+
+  function match_date (date1, date2) {
+    let date1_form_standard = `${date1.getYear()}-${date1.getMonth()}-${date1.getDate()}`
+    let date2_form_standard = `${date2.getYear()}-${date2.getMonth()}-${date2.getDate()}`
+
+    if (date1_form_standard === date2_form_standard) {
+      return true
+    } 
+
+    return false
   }
 
   function render () {
