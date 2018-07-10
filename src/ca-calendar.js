@@ -1,11 +1,13 @@
   const MONTHNAMES = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',  'December']
   const DAYNAMES = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday',  'Saturday' ]
+  const DAYNAMES_SIMPLFIED = [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri',  'Sat' ]
 
   var CaCalendar = function () {
 
     let options = {
       id: 'calendar',
-      date: ''
+      date: '',
+      is_simplified: false
     }
 
     let defaultYear = 0
@@ -139,7 +141,7 @@
     this.defaultMonth = objDate.month
     this.defaultDate = objDate.date
     
-    let objEle = createCalendarLayout()
+    let objEle = createCalendarLayout.call(this)
     elements.calendar = objEle.calendar
     elements.calendarTitle = objEle.calendarTitle
     elements.calendarBody = objEle.calendarBody
@@ -181,7 +183,7 @@
   }
 
   function extendDefaultSettings(source, properties) {
-    for (property in properties) {
+    for (let property in properties) {
       if (source.hasOwnProperty(property)) {
         source[property] = properties[property]
       }
@@ -235,11 +237,19 @@
     trDayNames = document.createElement('tr')
     trDayNames.className = 'cac-day-names'
 
-    for (let dayName of DAYNAMES) {
+    let daynames = []
+    if (this.options.is_simplified) {
+      daynames = DAYNAMES_SIMPLFIED
+    } else {
+      daynames = DAYNAMES
+    }
+
+    for (let dayName of daynames) {
       let thDayName = document.createElement('th')
       thDayName.innerHTML = dayName
       trDayNames.appendChild(thDayName)
     }
+    
 
     monthYear = document.createElement('div')
     monthYear.className = 'cac-monthYear'
