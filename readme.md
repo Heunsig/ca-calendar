@@ -1,2 +1,7 @@
 # Catcha Calendar
-Version 0.0.17 / Windows
+
+Javascript simple calendar plugin.
+
+## Version 
+
+0.0.17
