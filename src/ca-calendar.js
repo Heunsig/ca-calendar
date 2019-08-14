@@ -7,7 +7,7 @@ import {
   previousYear,
   nextMonth,
   previousMonth,
-  setContents,
+  contents1,
   setDefaultContents,
   click
 } from './prototypes/index'
@@ -20,19 +20,19 @@ const CaCalendar = function (target, opts) {
 
 CaCalendar.prototype.print = print
 
-CaCalendar.prototype.today = today
+CaCalendar.prototype.moveToToday = today
 
-CaCalendar.prototype.defaultDate = defaultDate
+CaCalendar.prototype.moveToDefaultDate = defaultDate
 
-CaCalendar.prototype.nextYear = nextYear
+CaCalendar.prototype.moveTonextYear = nextYear
 
-CaCalendar.prototype.previousYear = previousYear
+CaCalendar.prototype.moveTopreviousYear = previousYear
 
-CaCalendar.prototype.nextMonth = nextMonth
+CaCalendar.prototype.moveTonextMonth = nextMonth
 
-CaCalendar.prototype.previousMonth = previousMonth
+CaCalendar.prototype.moveTopreviousMonth = previousMonth
 
-CaCalendar.prototype.setContents = setContents
+CaCalendar.prototype.contents1 = contents1
 
 CaCalendar.prototype.setDefaultContents = setDefaultContents
 

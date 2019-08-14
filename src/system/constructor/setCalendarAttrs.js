@@ -28,5 +28,13 @@ export default {
     set: function (val) {
       setDate = val
     }
+  },
+  'setContents': {
+    get: function () {
+      return setContents
+    },
+    set: function (val) {
+      setContents = val
+    }
   }
 }

@@ -111,16 +111,16 @@ export function createCalendarBody () {
     }
 
     if (dateCounter <= this.daysPerMonth[this.month]) {
-      if (match_date(generate_date(generate_date_form(this.year, this.month, dateCounter)), generate_date(generate_date_form(this.defaultYear, this.defaultMonth, this.defaultDate))))
+      if (match_date(generate_date(generate_date_form(this.year, this.month, dateCounter)), generate_date(generate_date_form(this.setYear, this.setMonth, this.setDate))))
       {
         calendarContent += `
           <td class="cac-date-today cac-date">
             <div class="cac-date-box">
               <div class="cac-date-text">${dateCounter}</div>
               <div class="cac-date-content">`
-                if (this.defaultContents) {
+                if (this.setContents) {
                   dateBox += `<ul class="cac-list">`
-                  this.defaultContents.forEach(item => {
+                  this.setContents.forEach(item => {
                     dateBox += `
                       <li class="cac-list-item">
                         <div class="cac-list-item-label">${item.label}</div>
@@ -163,9 +163,9 @@ export function createCalendarBody () {
           <div class="cac-date-box">
             <div class="cac-date-text">${dateCounter}</div>
             <div class="cac-date-content">`
-              if (this.defaultContents) {
+              if (this.setContents) {
                 dateBox += `<ul class="cac-list">`
-                this.defaultContents.forEach(item => {
+                this.setContents.forEach(item => {
                   dateBox += `
                     <li class="cac-list-item">
                       <div class="cac-list-item-label">${item.label}</div>

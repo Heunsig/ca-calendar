@@ -1,4 +1,3 @@
-// import render from '../render'
 import { render } from '../system/renderer/calendarRenderers'
 import { getDefaultDate } from '../helpers/date'
 
@@ -51,13 +50,13 @@ export function previousYear () {
   render.call(this)
 }
 
-export function setContents (valContents) {
+export function contents1 (valContents) {
   this.contents = valContents
   render.call(this)
 }
 
 export function setDefaultContents (contents) {
-  this.defaultContents = contents
+  this.setContents = contents
   render.call(this)
 }
 
