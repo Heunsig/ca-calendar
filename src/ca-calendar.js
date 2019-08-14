@@ -1,139 +1,144 @@
-  const MONTHNAMES = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',  'December']
-  const DAYNAMES = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday',  'Saturday' ]
-  const DAYNAMES_SIMPLFIED = [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri',  'Sat' ]
+import options from './stores/options'
+// import calendarTerms from './stores/calendarTerms'
 
-  var CaCalendar = function () {
+// const MONTHNAMES = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',  'December']
+// const DAYNAMES = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday',  'Saturday' ]
+// const DAYNAMES_SIMPLFIED = [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri',  'Sat' ]
 
-    let options = {
-      id: 'calendar',
-      date: '',
-      is_simplified: false
-    }
+var CaCalendar = function (element, opts) {
 
-    let defaultYear = 0
-    let defaultMonth = 0
-    let defaultDate = 0
+  // let options = {
+  //   id: 'calendar',
+  //   date: '',
+  //   is_simplified: false
+  // }
 
-    let year = 0
-    let month = 0
-    let date = 0
+  Object.assign(options, { target: element }, opts)
 
-    let DefaultDate = null
-    let daysPerMonth = []
+  let defaultYear = 0
+  let defaultMonth = 0
+  let defaultDate = 0
 
-    let contents = []
-    let defaultContents = null
+  let year = 0
+  let month = 0
+  let date = 0
 
-    let elements = {
-      calendar: null,
-      calendarTitle: null,
-      calendarBody: null,
-      monthYear: null,
-      btnPrevMonth: null,
-      btnNextMonth: null
-    }
+  let DefaultDate = null
+  let daysPerMonth = []
 
-    let events = {
-      click: null
-    }
+  let contents = []
+  let defaultContents = null
 
-    if (arguments[0] && typeof arguments[0] === 'object') {
-      extendDefaultSettings(options, arguments[0])
-    }
-
-    Object.defineProperties(this, {
-      'options': {
-        get: function () {
-          return Object.assign({}, options)
-        }
-      },
-      'defaultYear': {
-        get: function () {
-          return defaultYear
-        },
-        set: function (val) {
-          defaultYear = val
-        }
-      },
-      'defaultMonth': {
-        get: function () {
-          return defaultMonth
-        },
-        set: function (val) {
-          defaultMonth = val
-        }
-      },
-      'defaultDate': {
-        get: function () {
-          return defaultDate
-        },
-        set: function (val) {
-          defaultDate = val
-        }
-      },
-      'year': {
-        get: function () {
-          return year
-        },
-        set: function (val) {
-          daysPerMonth = setDayPerMonth(val)
-          year = val
-        }
-      },
-      'month': {
-        get: function () {
-          return month
-        },
-        set: function (val) {
-          month = val
-        }
-      },
-      'date': {
-        get: function () {
-          return date
-        },
-        set: function (val) {
-          date = val
-        },
-      },
-      'contents': {
-        get: function () {
-          return contents
-        },
-        set: function (val) {
-          contents = val
-        }
-      },
-      'defaultContents': {
-        get: function () {
-          return defaultContents
-        },
-        set: function (val) {
-          defaultContents = val
-        }
-      },
-      'elements': {
-        get: function () {
-          return Object.assign({}, elements)
-        }
-      },
-      'daysPerMonth': {
-        get: function () {
-          return daysPerMonth.concat()
-        }
-      },
-      'events': {
-        get: function () {
-          return events
-        }
-      }
-    })
-
-    init.call(this, elements)
+  let elements = {
+    calendar: null,
+    calendarTitle: null,
+    calendarBody: null,
+    monthYear: null,
+    btnPrevMonth: null,
+    btnNextMonth: null
   }
 
+  let events = {
+    click: null
+  }
+
+  if (arguments[0] && typeof arguments[0] === 'object') {
+    extendDefaultSettings(options, arguments[0])
+  }
+
+  Object.defineProperties(this, {
+    'options': {
+      get: function () {
+        return Object.assign({}, options)
+      }
+    },
+    'defaultYear': {
+      get: function () {
+        return defaultYear
+      },
+      set: function (val) {
+        defaultYear = val
+      }
+    },
+    'defaultMonth': {
+      get: function () {
+        return defaultMonth
+      },
+      set: function (val) {
+        defaultMonth = val
+      }
+    },
+    'defaultDate': {
+      get: function () {
+        return defaultDate
+      },
+      set: function (val) {
+        defaultDate = val
+      }
+    },
+    'year': {
+      get: function () {
+        return year
+      },
+      set: function (val) {
+        daysPerMonth = setDayPerMonth(val)
+        year = val
+      }
+    },
+    'month': {
+      get: function () {
+        return month
+      },
+      set: function (val) {
+        month = val
+      }
+    },
+    'date': {
+      get: function () {
+        return date
+      },
+      set: function (val) {
+        date = val
+      },
+    },
+    'contents': {
+      get: function () {
+        return contents
+      },
+      set: function (val) {
+        contents = val
+      }
+    },
+    'defaultContents': {
+      get: function () {
+        return defaultContents
+      },
+      set: function (val) {
+        defaultContents = val
+      }
+    },
+    'elements': {
+      get: function () {
+        return Object.assign({}, elements)
+      }
+    },
+    'daysPerMonth': {
+      get: function () {
+        return daysPerMonth.concat()
+      }
+    },
+    'events': {
+      get: function () {
+        return events
+      }
+    }
+  })
+
+  init.call(this, elements)
+}
+
   function init (elements) {
-    let objDate = setDefaultDate(this.options)
+    let objDate = setDefaultDate(options)
     this.year = objDate.year
     this.month = objDate.month
     this.date = objDate.date
@@ -238,7 +243,7 @@
     trDayNames.className = 'cac-day-names'
 
     let daynames = []
-    if (this.options.is_simplified) {
+    if (options.is_simplified) {
       daynames = DAYNAMES_SIMPLFIED
     } else {
       daynames = DAYNAMES
@@ -499,7 +504,7 @@
 
   CaCalendar.prototype.print = function () {
     render.call(this)
-    document.getElementById(this.options.id).appendChild(this.elements.calendar)
+    options.target.appendChild(this.elements.calendar)
   }
 
   CaCalendar.prototype.today = function () {  
@@ -511,7 +516,7 @@
   }
 
   CaCalendar.prototype.defaultDate = function () {
-    let DateValue = getDefaultDate(this.options.date)
+    let DateValue = getDefaultDate(options.date)
     this.month = DateValue.getMonth()
     this.date = DateValue.getDate()
     this.year = DateValue.getFullYear()
