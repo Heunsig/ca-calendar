@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Catcha Calendar Demo</title>
+  <link rel="stylesheet" href="catcha-calendar-0.1.0.min.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <div id="wrapper">
+    <h1 id="title">Catcha Calendar Demo Page</h1>
+    <div id="calendar-wrapper">
+      <div id="calendar"></div>
+    </div>
+  </div>
+
+  <script src="catcha-calendar-0.1.0.min.js"></script>
+  <script>
+    var calendar = new CaCalendar(document.querySelector("#calendar"), {
+      is_simplified: true
+    })
+    calendar.click((e, date) => {
+      alert(date.standard)
+    })
+    calendar.print()
+  </script>
+</body>
+</html>
