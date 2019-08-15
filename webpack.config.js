@@ -11,7 +11,7 @@ const webpack = require('webpack')
 module.exports = {
   mode: process.env.ENV,
   entry: isProduction ? {
-    [`${pjson.name}-${pjson.version}.min.js`]: './src/index.js',
+    [`${pjson.name}-${pjson.version}.min`]: './src/index.js',
     'example': './src/example.js'
   } : {
     bundle: './src/index.js',
