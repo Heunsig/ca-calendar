@@ -9,7 +9,7 @@ const webpack = require('webpack')
 
 module.exports = {
   mode: process.env.ENV,
-  entry: {
+  entry: isProduction ? './src/index.js' : {
     bundle: './src/index.js',
     sample: './src/test.js'
   },
@@ -35,7 +35,7 @@ module.exports = {
     })
   ],
   output: {
-    filename: '[name].js',
+    filename: isProduction ? 'bundle.js' : '[name].js',
     path: path.resolve(__dirname, isProduction ? 'dist' : 'dev')
   },
   module: {

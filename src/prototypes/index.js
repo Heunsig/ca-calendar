@@ -16,7 +16,7 @@ export function moveToToday () {
 }
 
 export function moveToAssignedDate () {
-  let DateValue = getMDY(options.date)
+  let DateValue = getMDY(this.options.date)
   this.month = DateValue.month
   this.date = DateValue.date
   this.year = DateValue.year
