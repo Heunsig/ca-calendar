@@ -1,4 +1,6 @@
 import CaCalendarConstructor from './system/constructor/index'
+import pjson from '../package.json'
+
 import { 
   print,
   moveToToday,
@@ -13,9 +15,10 @@ import {
 } from './prototypes/index'
 
 const CaCalendar = function (target, opts) {
+  this.app = pjson.name
+  this.version = pjson.version
 
   CaCalendarConstructor.call(this, target, opts)
-
 }
 
 CaCalendar.prototype.print = print

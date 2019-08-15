@@ -1,4 +1,5 @@
 const path = require('path')
+const pjson = require('./package.json')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -22,7 +23,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.css'
+      filename: `${pjson.name}-${pjson.version}.min.css`
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
@@ -35,7 +36,7 @@ module.exports = {
     })
   ],
   output: {
-    filename: isProduction ? 'bundle.js' : '[name].js',
+    filename: isProduction ? `${pjson.name}-${pjson.version}.min.js` : '[name].js',
     path: path.resolve(__dirname, isProduction ? 'dist' : 'dev')
   },
   module: {
