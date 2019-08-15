@@ -1,12 +1,13 @@
-import { setDayPerMonth } from '../../helpers/date'
+import { getTotalDaysPerMonth } from '../helpers/calendar'
+import { isMatched } from '../helpers/string'
 
 let year = 0
 let month = 0
-let date = 0
+let day = 0
 
 let daysPerMonth = []
 
-let contents = []
+let schedules = []
 
 export default {
   'year': {
@@ -14,7 +15,7 @@ export default {
       return year
     },
     set: function (val) {
-      daysPerMonth = setDayPerMonth(val)
+      daysPerMonth = getTotalDaysPerMonth(val)
       year = val
     }
   },
@@ -26,12 +27,12 @@ export default {
       month = val
     }
   },
-  'date': {
+  'day': {
     get: function () {
-      return date
+      return day
     },
     set: function (val) {
-      date = val
+      day = val
     },
   },
   'daysPerMonth': {
@@ -39,12 +40,22 @@ export default {
       return daysPerMonth.concat()
     }
   },
-  'contents': {
+  'schedules': {
     get: function () {
-      return contents
+      return schedules
     },
     set: function (val) {
-      contents = val
+      for (let a of val) {
+        if (!a.format) {
+          a.format = 'mm/dd/yyyy'
+        }
+
+        if (!isMatched(a.date, a.format)) {
+          throw new Error('Whoop! the date and format are not matched.')
+        }
+      }
+
+      schedules = [...schedules, ...val ]
     }
   }
 }

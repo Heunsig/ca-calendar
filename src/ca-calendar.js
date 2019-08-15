@@ -1,13 +1,13 @@
 import CaCalendarConstructor from './system/constructor/index'
 import { 
   print,
-  today,
-  defaultDate,
-  nextYear,
-  previousYear,
-  nextMonth,
-  previousMonth,
-  contents1,
+  moveToToday,
+  moveToAssignedDate,
+  moveToNextYear,
+  moveToPreviousYear,
+  moveToNextMonth,
+  moveToPreviousMonth,
+  addSchedules,
   setDefaultContents,
   click
 } from './prototypes/index'
@@ -20,21 +20,21 @@ const CaCalendar = function (target, opts) {
 
 CaCalendar.prototype.print = print
 
-CaCalendar.prototype.moveToToday = today
+CaCalendar.prototype.moveToToday = moveToToday
 
-CaCalendar.prototype.moveToDefaultDate = defaultDate
+CaCalendar.prototype.moveToAssignedDate = moveToAssignedDate
 
-CaCalendar.prototype.moveTonextYear = nextYear
+CaCalendar.prototype.moveToNextYear = moveToNextYear
 
-CaCalendar.prototype.moveTopreviousYear = previousYear
+CaCalendar.prototype.moveToPreviousYear = moveToPreviousYear
 
-CaCalendar.prototype.moveTonextMonth = nextMonth
+CaCalendar.prototype.moveToNextMonth = moveToNextMonth
 
-CaCalendar.prototype.moveTopreviousMonth = previousMonth
+CaCalendar.prototype.moveToPreviousMonth = moveToPreviousMonth
 
-CaCalendar.prototype.contents1 = contents1
+CaCalendar.prototype.addSchedules = addSchedules
 
-CaCalendar.prototype.setDefaultContents = setDefaultContents
+// CaCalendar.prototype.setDefaultContents = setDefaultContents
 
 CaCalendar.prototype.click = click
 
