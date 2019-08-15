@@ -10,7 +10,10 @@ const webpack = require('webpack')
 
 module.exports = {
   mode: process.env.ENV,
-  entry: isProduction ? './src/index.js' : {
+  entry: isProduction ? {
+    [`${pjson.name}-${pjson.version}.min.js`]: './src/index.js',
+    'example': './src/example.js'
+  } : {
     bundle: './src/index.js',
     sample: './src/test.js'
   },
@@ -23,7 +26,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `${pjson.name}-${pjson.version}.min.css`
+      filename: isProduction ? `${pjson.name}-${pjson.version}.min.css` : 'style.css'
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
@@ -36,7 +39,8 @@ module.exports = {
     })
   ],
   output: {
-    filename: isProduction ? `${pjson.name}-${pjson.version}.min.js` : '[name].js',
+    // filename: isProduction ? `${pjson.name}-${pjson.version}.min.js` : '[name].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, isProduction ? 'dist' : 'dev')
   },
   module: {

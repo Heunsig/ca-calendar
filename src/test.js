@@ -1,9 +1,9 @@
-// const calendar = new CaCalendar(document.querySelector('#calendar'), {
-//   // date: '09/12/2018',
-//   is_simplified: true
-// })
+const calendar = new CaCalendar(document.querySelector('#calendar'), {
+  // date: '09/12/2018',
+  is_simplified: true
+})
 
-// calendar.print()
+calendar.print()
 // // calendar.moveToToday()
 
 // console.log('CaCalendar', calendar)
