@@ -17,6 +17,5 @@ export function convertDateFormatToFormatChecker (format) {
 }
 
 export function isMatched (str, pattern) {
-
   return new RegExp(convertDateFormatToFormatChecker(pattern), 'g').test(str)
 }

@@ -2,8 +2,6 @@ let assignedYear = 0
 let assignedMonth = 0
 let assignedDay = 0
 
-// let assignedContents = null
-
 export default {
   'assignedYear': {
     get: function () {
@@ -28,13 +26,5 @@ export default {
     set: function (val) {
       assignedDay = val
     }
-  },
-  // 'assignedContents': {
-  //   get: function () {
-  //     return assignedContents
-  //   },
-  //   set: function (val) {
-  //     assignedContents = val
-  //   }
-  // }
+  }
 }

@@ -62,19 +62,13 @@ export function convertToBasicDateFormat (date, format) {
 
   return `${year}-${convertToTwoDigit(month)}-${convertToTwoDigit(day)}`
   // 'yyyy' -> 0000 ~ 9999
-  // 'y' -> 00 ~ 99
+  // 'yy' -> 00 ~ 99
   // 'm' -> 1 ~ 12
   // 'mm' -> 01 ~ 12
   // 'd' -> 1 ~ 31
   // 'dd' -> 01 ~ 31
 }
 
-// // To the calendar helper
-// export function getFristDayOfTheWeek (month, year) {
-//   let firstDate = new Date(MONTHNAMES[month] + ' 1, ' + year)
-//   let firstDayOfTheWeek = firstDate.getDay()
-//   return firstDayOfTheWeek
-// }
 
 export function matchDate (date1, date2) {
   let date1_form_standard = `${date1.getYear()}-${date1.getMonth()}-${date1.getDate()}`
@@ -86,39 +80,3 @@ export function matchDate (date1, date2) {
 
   return false
 }
-
-// // To the converter helper
-// export function generateDate (date) {
-//   let newDate = new Date(date)
-//   newDate.setMinutes( newDate.getMinutes() + newDate.getTimezoneOffset() )
-//   return newDate
-// }
-
-// // To the converter helper
-// export function generateDateForm (year, month, date) {
-//   return `${year}-${convertToTwoDigitMonth(month)}-${convertToTwoDigitDate(date)}`
-// }
-
-// // To the converter helper
-// export function convertToTwoDigitMonth (month) {
-//   return ('0' + (month + 1)).slice(-2)
-// }
-
-// // To the converter helper
-// export function convertToTwoDigitDate (date) {
-//   return ('0' + date).slice(-2)
-// }
-
-// // To the calendar helper
-// export function getTotalDaysOfFeb (year) {
-//   if ((year % 100 != 0) && (year % 4 == 0) || (year % 400 == 0)) {
-//     return 29
-//   } else {
-//     return 28
-//   }
-// }
-
-// // To the calendar helper
-// export function getTotalDaysPerMonth (year) {
-//   return [ 31, getTotalDaysOfFeb(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
-// }
