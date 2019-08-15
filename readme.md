@@ -1,7 +1,5 @@
-# Catcha Calendar
+# Catcha Calendar  
+The Javascript simple calendar plugin without any dependencies.
 
-Javascript simple calendar plugin.
-
-## Version 
-
-0.0.17
+## Version  
+0.1.0

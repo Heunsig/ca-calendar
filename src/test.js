@@ -54,9 +54,9 @@ calendar.print()
 
 // console.log('Ca >>', calendar)
 // calendar.print()
-// CaCalendar.click((e, date) => {
-//   console.log(date)
-// })
+calendar.click((e, date) => {
+  console.log(date)
+})
 // calendar.addSchedules([
 //   {
 //     date: '2018-06-11',

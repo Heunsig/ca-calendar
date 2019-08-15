@@ -1,3 +1,5 @@
+import { convertToTwoDigit } from '../helpers/date'
+
 export default function (handler) {
   let dateBoxs = document.querySelectorAll('.cac-date')
 
@@ -7,11 +9,13 @@ export default function (handler) {
       formatted: ''
     }
 
-    let date = box.querySelector('.cac-date-text').innerHTML
+    let year = this.year
+    let month = this.month
+    let day = box.querySelector('.cac-date-text').innerHTML
 
-    if (date) {
-      fullDate.standard = `${this.year}-${twoDigitMonth(this.month)}-${twoDigitDate(date)}`
-      fullDate.formatted = `${twoDigitMonth(this.month)}/${twoDigitDate(date)}/${this.year}`
+    if (day) {
+      fullDate.standard = `${year}-${convertToTwoDigit(month)}-${convertToTwoDigit(day)}`
+      fullDate.formatted = `${convertToTwoDigit(month)}/${convertToTwoDigit(day)}/${year}`
     } else {
       fullDate = null
     }
