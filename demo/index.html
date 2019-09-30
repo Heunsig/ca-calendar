@@ -23,6 +23,72 @@
     calendar.click((e, date) => {
       alert(date.standard)
     })
+    
+    calendar.addSchedules([
+    {
+      date: '09/30/2019',
+      items: [
+        {
+          label: 'Meeting',  
+          value: '13:00'
+        },
+      ]
+    },
+    {
+      date: '10/05/2019',
+      items: [
+        {
+          label: 'Birthday Party',  
+          value: '18:30'
+        },
+      ]
+    },
+    {
+      date: '10/18/2019',
+      items: [
+        {
+          label: 'Family trip',  
+          value: ''
+        }
+      ]
+    },
+    {
+      date: '10/19/2019',
+      items: [
+        {
+          label: 'Family trip',  
+          value: ''
+        }
+      ]
+    },
+    {
+      date: '10/20/2019',
+      items: [
+        {
+          label: 'Family trip',  
+          value: ''
+        }
+      ]
+    },
+    {
+      date: '11/04/2019',
+      items: [
+        {
+          label: 'business conference',  
+          value: '14:20'
+        }
+      ]
+    },
+    {
+      date: '11/05/2019',
+      items: [
+        {
+          label: 'business conference',  
+          value: '14:20'
+        }
+      ]
+    }
+  ])
     calendar.print()
   </script>
 </body>
